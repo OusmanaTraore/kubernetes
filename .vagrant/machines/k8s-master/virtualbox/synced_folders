@@ -1,1 +1,1 @@
-{"virtualbox":{"/vagrant":{"guestpath":"/vagrant","hostpath":"C:/Users/orsys/Desktop/kubernetes-setup","disabled":false,"__vagrantfile":true}}}
+{"virtualbox":{"/vagrant":{"guestpath":"/vagrant","hostpath":"/home/formation/kubernetes","disabled":false,"__vagrantfile":true}}}
