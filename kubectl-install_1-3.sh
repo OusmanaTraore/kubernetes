@@ -32,10 +32,13 @@ echo ""
 echo "======      ETAPE 3/9   ========="
 echo " Création et configuration du fichier /etc/docker/daemon.json"
 sleep 2
-sudo echo  -e  `{ "exec-opts": ["native.cgroupdriver=systemd"] } `  > "/etc/docker/daemon.json"
-sudo cat "/etc/docker/daemon.json"
+echo ""
+echo " Editer le fichier /etc/docker/daemon.json et insérer le code { "exec-opts": ["native.cgroupdriver=systemd"] } "
 
 echo ""
 echo "======      ETAPE 4/9   ========="
 echo "Redémarrage du service"
 sudo systemctl restart docker
+sudo systemctl status docker
+
+
