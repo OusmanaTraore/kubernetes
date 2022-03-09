@@ -6,7 +6,9 @@ sleep 2
 echo ""
 echo "======      ETAPE 4/9   ========="
 echo "Redémarrage du service"
+
 sudo systemctl restart docker
+sudo systemctl status  docker
 
 echo "======      ETAPE 5/9  ========="
 echo " Téléchargement des packages kubernetes"
@@ -28,3 +30,10 @@ echo "======      ETAPE 6/9   ========="
 echo "Installation de kubelet kubeadm kubectl kubernetes-cni"
 sleep 2
 sudo apt install -y kubelet kubeadm kubectl kubernetes-cni
+
+echo "======PLEASE ====="
+echo " Veuillez éditer le fichier /etc/default/kubelet et insérer le code "
+echo " suivant en remplacant l'adresse IP_ETH1 par celle de votre machine"
+
+echo ""
+echo "KUBELET_EXTRA_ARGS="--node-ip=$IP_ETH1"
