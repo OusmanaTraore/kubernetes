@@ -42,7 +42,7 @@ else
     echo " Création et configuration du fichier /etc/docker/daemon.json"
     sleep 2
     echo ""
-    echo " Editer le fichier /etc/docker/daemon.json et insérer le code { "exec-opts": ["native.cgroupdriver=systemd"] } "
+    echo " Editer le fichier /etc/docker/daemon.json et insérer le code { \"exec-opts\": [\"native.cgroupdriver=systemd\"] } "
     echo " Ensuite lancer le script kubectl-install_2-3.sh"
     echo "..."
 fi 
