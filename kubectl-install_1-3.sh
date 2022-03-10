@@ -30,7 +30,7 @@ sudo apt update -y
 echo ""
 echo " 4/4 - installation de docker"
 echo ""
-if [ $? != 0 ]
+if [ $? -ne 0 ]
 then
   echo "ECHEC installation de docker "
   exit 1
