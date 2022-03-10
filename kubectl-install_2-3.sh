@@ -47,7 +47,9 @@ elif
   echo ""
   echo KUBELET_EXTRA_ARGS="--node-ip=$IP_ETH1"
   sleep 2
+  echo ""
   echo "Ensuite lancez le script kubectl-install_3-3.sh"
+  echo "..."
 fi
   
   
