@@ -30,6 +30,7 @@ sudo apt update -y
 echo ""
 echo " 4/4 - installation de docker"
 echo ""
+sudo apt install -y docker-ce
 if [ $? -ne 0 ]
   then
     echo "ECHEC installation de docker "
