@@ -1,5 +1,5 @@
 #!/bin/bash
-IP_ETH1="192.168.50.13"
+read -p "Entrez une derniere fois l'adresse IP de la machine: " IP_ETH1
 KUBELET_VAR="KUBELET_EXTRA_ARGS=\"--node-ip=$IP_ETH1\""
 
 echo "======      ETAPE 7/9   ========="
