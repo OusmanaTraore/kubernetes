@@ -1,9 +1,10 @@
 #!/bin/bash
 
-IP_ETH1="192.168.50.20"
-#read  "Entrez l'adresse IP de la machine" IP_ETH1
+
+read -p "Entrez l'adresse IP de la machine: " IP_ETH1
 
 echo "Adresse machine : $IP_ETH1 "
+echo "==> ok"
 echo "======Début installation======"
 echo "======      ETAPE 1/9  Désactivation de la swap ========="
 sleep 2
