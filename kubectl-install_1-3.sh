@@ -31,12 +31,11 @@ echo ""
 echo " 4/4 - installation de docker"
 echo ""
 sudo apt install -y docker-ce
-if [ $? -ne 0 ]
-  then
+if [ $? -ne 0 ];
+then
     echo "ECHEC installation de docker "
     exit 1
-elif
-  then
+else
     sleep 2
     echo " installation de docker OK" 
     echo "======      ETAPE 3/9   ========="
@@ -46,7 +45,6 @@ elif
     echo " Editer le fichier /etc/docker/daemon.json et insérer le code { "exec-opts": ["native.cgroupdriver=systemd"] } "
     echo " Ensuite lancer le script kubectl-install_2-3.sh"
     echo "..."
-    
 fi 
 
 
