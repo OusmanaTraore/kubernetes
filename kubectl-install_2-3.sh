@@ -2,6 +2,7 @@
 
 DAEMON_VAR="{ \"exec-opts\": [\"native.cgroupdriver=systemd\"] }"
 sleep 2
+read -p "Entrez à nouveau l'adresse IP de la machine : " IP_ETH1
 echo "======      ETAPE 3/9   ========="
 echo " Vérification de la configuration du fichier /etc/docker/daemon.json"
 test_daemon=$(cat /etc/docker/daemon.json)
