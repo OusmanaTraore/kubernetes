@@ -25,14 +25,15 @@ else
         echo " ERREUR DE DEMARRAGE DOCKER"
         exit
     else
-        sudo systemctl status  docker
+        sudo systemctl status  docker | grep Active  
         echo "======      ETAPE 5/9  ========="
         echo " Téléchargement des packages kubernetes"
         sleep 2
-        echo "q"
         curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+        sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+        bionic stabe"
+        curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
         echo "deb http://apt.kubernetes.io/ kubernetes-xenial main" >> ~/kubernetes.list
-
         sudo mv ~/kubernetes.list /etc/apt/sources.list.d
         sudo apt update
         echo ""
@@ -44,7 +45,7 @@ else
         sudo apt install -y kubeadm 
         sudo apt install -y kubectl 
         sudo apt install -y kubernetes-cni
-     fi
+        fi
         if [ $? -ne 0 ]; 
         then
             echo " ECHEC  étape installation kubeadm kubectl kubernetes-cli "
@@ -60,4 +61,4 @@ else
             echo "Ensuite lancez le script kubectl-install_3-3.sh"
             echo "..."
         fi
-    fi
+fi
