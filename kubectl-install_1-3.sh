@@ -35,7 +35,8 @@ if [ $? -ne 0 ]
   then
     echo "ECHEC installation de docker "
     exit 1
-  elif
+elif
+  then
     sleep 2
     echo " installation de docker OK" 
     echo "======      ETAPE 3/9   ========="
@@ -45,6 +46,7 @@ if [ $? -ne 0 ]
     echo " Editer le fichier /etc/docker/daemon.json et insérer le code { "exec-opts": ["native.cgroupdriver=systemd"] } "
     echo " Ensuite lancer le script kubectl-install_2-3.sh"
     echo "..."
+    
 fi 
 
 
