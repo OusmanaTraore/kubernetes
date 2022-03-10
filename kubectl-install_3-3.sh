@@ -7,22 +7,22 @@ sleep 2
 #sudo echo KUBELET_EXTRA_ARGS="--node-ip=$IP_ETH1" > "/etc/default/kubelet"
 sudo cat "/etc/default/kubelet"
 
-if [ $? -ne  KUBELET_EXTRA_ARGS="--node-ip=$IP_ETH1"  ] 
+if [ $? -ne  KUBELET_EXTRA_ARGS="--node-ip=$IP_ETH1"  ] ;
 then
   echo "Défaut de configuration du fichier /etc/default/kubelet"
   exit 
-elif
+else
   echo "======      ETAPE 8/9   ========="
   echo "Redémarrage des services daemon  et kubelet"
   sleep 2
 
   echo " 1/2 - Redémarrage daemon"
   systemctl  daemon-reload
-  if [ $? -ne 0 ]
+  if [ $? -ne 0 ];
   then
     echo "ECHEC daemon-reload"
     exit
-  elif 
+  else
     sudo systemctl status daemon-reload
     sleep 2
     echo " 2/2 - Redémarrage kubelet"
@@ -38,7 +38,3 @@ elif
    fi
 
 fi
-
-
-
-
