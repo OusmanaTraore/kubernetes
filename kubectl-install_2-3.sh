@@ -44,6 +44,7 @@ else
         sudo apt install -y kubeadm 
         sudo apt install -y kubectl 
         sudo apt install -y kubernetes-cni
+     fi
         if [ $? -ne 0 ]; 
         then
             echo " ECHEC  étape installation kubeadm kubectl kubernetes-cli "
