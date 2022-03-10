@@ -1,12 +1,10 @@
 #!/bin/bash
-
 IP_ETH1="192.168.50.20"
-DAEMON_VAR=`{ "exec-opts": ["native.cgroupdriver=systemd"] }`
-
+DAEMON_VAR="{ \"exec-opts\": [\"native.cgroupdriver=systemd\"] }"
 sleep 2
 echo "======      ETAPE 3/9   ========="
 echo " Vérification de la configuration du fichier /etc/docker/daemon.json"
-cat /etc/docker/daemon.json > $test_daemon
+test_daemon=$(cat /etc/docker/daemon.json)
 if [ $test_daemon -ne $DAEMON_VAR ];
 then
     echo "ERREUR de configuration du fichier /etc/docker/daemon.json"
@@ -15,6 +13,7 @@ then
     exit
 else
     echo " Configuration du fichier /etc/docker/daemon.json === OK ==="
+    cat /etc/docker/daemon.json
     sleep 2
     echo "======      ETAPE 4/9   ========="
     echo "Redémarrage du service docker"
@@ -30,12 +29,6 @@ else
         echo " Téléchargement des packages kubernetes"
         sleep 2
         curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-
-        sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
-        bionic stabe"
-
-        curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
-
         echo "deb http://apt.kubernetes.io/ kubernetes-xenial main" >> ~/kubernetes.list
 
         sudo mv ~/kubernetes.list /etc/apt/sources.list.d
@@ -62,8 +55,4 @@ else
             echo "..."
         fi
     fi
-fi
-  
-  
-
 
