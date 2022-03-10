@@ -54,23 +54,49 @@ fi
     echo ""
     sleep 2
     
-    echo 
+    echo ""
     read -p " Machine \"master\" ou \"node\" ? "  choice
  
-case $choice in
+    case $choice in
      master)
-          echo "Thank you"
-          echo "Your type: Yes"
+          echo sudo kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address=$IP_ETH1 --ignore-preflight-errors=NumCPU
+          echo "===wait a bit please ===
+          sleep 2
+          mkdir -p $HOME/.kube
+          sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+          sudo chown $(id -u):$(id -g) $HOME/.kube/config
+          echo ""
+          echo "=========================="
+          echo "Tester l\'acces au cluster"
+          echo "=========================="
+          kubectl cluster-info
+          sleep 2
+          kubectl get nodes 
+          sleep 2
+          kubectl get pods -n kube-system
+          sleep 2
+          echo "========================="
+          echo "Configuration du réseau  "
+          echo "========================="
+          kubectl apply -f https://github.com/coreos/flannel/raw/master/Documentation/kube-flannel.yml
+          echo " Copier la ligne de code ci-dessous et appliquer la aux nodes pour joindre le cluster
+          sudo kubeadm token create --print-join-command
           ;;
      node)
-          echo "node==ok"
+          echo "node?"
+          echo "===> OK  "
+          sleep 2
           echo "============================================"
-          echo "===== FIN de l'installation             ===="
+          echo "===== Fin de l'opération                ===="
           echo "============================================"
           ;;
      *)
           echo "Sorry, invalid input"
           ;;
-esac
+    esac
+      sleep 2
+          echo "============================================"
+          echo "===== Fin de toutes les  opérations     ===="
+          echo "============================================"
     
    fi
