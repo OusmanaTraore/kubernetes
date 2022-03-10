@@ -56,7 +56,7 @@ else
             echo " Veuillez éditer le fichier /etc/default/kubelet et insérer le code "
             echo " suivant en remplacant l'adresse IP_ETH1 par celle de votre machine"
             echo ""
-            echo KUBELET_EXTRA_ARGS="--node-ip=$IP_ETH1"
+            echo KUBELET_EXTRA_ARGS=\"--node-ip=$IP_ETH1\"
             sleep 2
             echo ""
             echo "Ensuite lancez le script kubectl-install_3-3.sh"
