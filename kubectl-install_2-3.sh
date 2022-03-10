@@ -7,7 +7,7 @@ echo "======      ETAPE 4/9   ========="
 echo "Redémarrage du service docker"
 
 sudo systemctl restart docker
-if [ $? != 0 ] 
+if [ $? -ne 0 ] 
 then
   echo " ERREUR DE DEMARRAGE DOCKER"
   exit
@@ -36,7 +36,7 @@ elif
   sudo apt install -y kubelet kubeadm kubectl kubernetes-cni
 fi
 
-if [ $? != 0 ] 
+if [ $? -ne 0 ] 
 then
   echo " ECHEC  étape installation kubeadm kubectl kubernetes-cli "
   exit
