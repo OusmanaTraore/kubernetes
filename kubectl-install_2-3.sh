@@ -1,5 +1,5 @@
 #!/bin/bash
-IP_ETH1="192.168.50.20"
+
 DAEMON_VAR="{ \"exec-opts\": [\"native.cgroupdriver=systemd\"] }"
 sleep 2
 echo "======      ETAPE 3/9   ========="
@@ -12,8 +12,9 @@ then
     echo "..."
     exit
 else
-    echo " Configuration du fichier /etc/docker/daemon.json === OK ==="
     cat /etc/docker/daemon.json
+    echo " Configuration du fichier /etc/docker/daemon.json "
+    echo "===> ok"
     sleep 2
     echo "======      ETAPE 4/9   ========="
     echo "Redémarrage du service docker"
@@ -28,6 +29,7 @@ else
         echo "======      ETAPE 5/9  ========="
         echo " Téléchargement des packages kubernetes"
         sleep 2
+        echo "q"
         curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
         echo "deb http://apt.kubernetes.io/ kubernetes-xenial main" >> ~/kubernetes.list
 
@@ -38,7 +40,10 @@ else
         echo "======      ETAPE 6/9   ========="
         echo "Installation de kubelet kubeadm kubectl kubernetes-cni"
         sleep 2
-        sudo apt install -y kubelet kubeadm kubectl kubernetes-cni
+        sudo apt install -y kubelet 
+        sudo apt install -y kubeadm 
+        sudo apt install -y kubectl 
+        sudo apt install -y kubernetes-cni
         if [ $? -ne 0 ]; 
         then
             echo " ECHEC  étape installation kubeadm kubectl kubernetes-cli "
