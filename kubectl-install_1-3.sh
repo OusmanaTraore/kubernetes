@@ -31,19 +31,19 @@ echo ""
 echo " 4/4 - installation de docker"
 echo ""
 if [ $? -ne 0 ]
-then
-  echo "ECHEC installation de docker "
-  exit 1
-elif
-  sleep 2
-  echo " installation de docker OK" 
-  echo "======      ETAPE 3/9   ========="
-  echo " Création et configuration du fichier /etc/docker/daemon.json"
-  sleep 2
-  echo ""
-  echo " Editer le fichier /etc/docker/daemon.json et insérer le code { "exec-opts": ["native.cgroupdriver=systemd"] } "
-  echo " Ensuite lancer le script kubectl-install_2-3.sh"
-  echo "..."
+  then
+    echo "ECHEC installation de docker "
+    exit 1
+  elif
+    sleep 2
+    echo " installation de docker OK" 
+    echo "======      ETAPE 3/9   ========="
+    echo " Création et configuration du fichier /etc/docker/daemon.json"
+    sleep 2
+    echo ""
+    echo " Editer le fichier /etc/docker/daemon.json et insérer le code { "exec-opts": ["native.cgroupdriver=systemd"] } "
+    echo " Ensuite lancer le script kubectl-install_2-3.sh"
+    echo "..."
 fi 
 
 
