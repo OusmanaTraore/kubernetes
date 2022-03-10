@@ -1,11 +1,22 @@
 #!/bin/bash
 IP_ETH1="192.168.50.20"
+KUBELET_VAR="KUBELET_EXTRA_ARGS=\"--node-ip=$IP_ETH1\""
+test_kubelet=
 echo "======      ETAPE 7/9   ========="
 echo " configuration kubernetes"
-sleep 2
 
+echo " Vérification de la configuration du fichier /etc/default/kubelet"
+sleep 3
 #sudo echo KUBELET_EXTRA_ARGS="--node-ip=$IP_ETH1" > "/etc/default/kubelet"
-sudo cat "/etc/default/kubelet"
+sudo cat "/etc/default/kubelet" > test_kubelet
+
+if [ $ttest_kubelet -ne $KUBELET_VAR ];
+then
+    echo "ERREUR de configuration du fichier /etc/docker/daemon.json"
+    echo "Corriger votre fichier puis relancer le script"
+    echo "..."
+    exit
+else
 
 if [ $? -ne  KUBELET_EXTRA_ARGS="--node-ip=$IP_ETH1"  ] ;
 then
