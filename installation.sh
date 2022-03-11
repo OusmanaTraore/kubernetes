@@ -1,5 +1,6 @@
 #!/bin/bash
-read -p "Entrez une derniere fois l'adresse IP de la machine: " IP_ETH1
+source kubectl-install_1-3.sh
+
 KUBELET_VAR="KUBELET_EXTRA_ARGS=\"--node-ip=$IP_ETH1\""
 
 echo "======      ETAPE 7/9   ========="

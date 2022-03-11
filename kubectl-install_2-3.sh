@@ -1,4 +1,5 @@
 #!/bin/bash
+source kubectl-install_1-3.sh
 
 DAEMON_VAR="{ \"exec-opts\": [\"native.cgroupdriver=systemd\"] }"
 sleep 2
