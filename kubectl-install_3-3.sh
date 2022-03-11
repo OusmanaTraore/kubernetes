@@ -24,7 +24,7 @@ then
     echo "ERREUR de configuration du fichier /etc/default/kubelet"
     echo "Corrigez le  fichier puis relancer le script"
     echo "..."
-    exit
+ #   exit
 else
   echo "<=== Configuration du fichier /etc/default/kubelet ===>"
   echo "===>...OK"
