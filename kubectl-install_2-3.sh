@@ -1,11 +1,21 @@
 #!/bin/bash
-source kubectl-install_1-3.sh
-
+#source kubectl-install_1-3.sh
 DAEMON_VAR="{ \"exec-opts\": [\"native.cgroupdriver=systemd\"] }"
+echo "===================================================================================>"
+echo "Vérifier l'adresse IP ... "
+#sleep 2
+echo " Adresses IP disponibles"
+for i in $(ip a | cut -d " " -f 6 | grep ^1 | cut -d "/" -f 1)
+do
+    echo "===> $i"
+done
+
+echo "===================================================================================>"
+read -p "Entrez  de nouveau l'adresse IP de la machine: " IP_ETH1 
+echo "===================================================================================>"
+echo "||=======   ETAPE 3/9  Configuration du fichier  /etc/docker/daemon.json  ========||"
+echo "||====== Vérification ... =====>"
 sleep 2
-read -p "Entrez à nouveau l'adresse IP de la machine : " IP_ETH1
-echo "======      ETAPE 3/9   ========="
-echo " Vérification de la configuration du fichier /etc/docker/daemon.json"
 test_daemon=$(cat /etc/docker/daemon.json)
 if [ $test_daemon -ne $DAEMON_VAR ];
 then
@@ -15,11 +25,9 @@ then
     exit
 else
     cat /etc/docker/daemon.json
-    echo " Configuration du fichier /etc/docker/daemon.json "
-    echo "===> ok"
+    echo " Configuration du fichier /etc/docker/daemon.json ===> OK"
     sleep 2
-    echo "======      ETAPE 4/9   ========="
-    echo "Redémarrage du service docker"
+    echo "||=======   ETAPE 4/9  Redémarrage du service docker  ============================||"
 
     sudo systemctl restart docker
     if [ $? -ne 0 ]; 
@@ -28,8 +36,7 @@ else
         exit
     else
         sudo systemctl status  docker | grep Active  
-        echo "======      ETAPE 5/9  ========="
-        echo " Téléchargement des packages kubernetes"
+        echo "||=======   ETAPE 5/9  Téléchargement des packages kubernetes  ===================||"
         sleep 2
         curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
         sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
@@ -40,8 +47,7 @@ else
         sudo apt update
         echo ""
 
-        echo "======      ETAPE 6/9   ========="
-        echo "Installation de kubelet kubeadm kubectl kubernetes-cni"
+        echo "||=======   ETAPE 6/9  Installation de kubelet kubeadm kubectl kubernetes-cni  ===||"
         sleep 2
         sudo apt install -y kubelet 
         sudo apt install -y kubeadm 
@@ -53,9 +59,8 @@ else
             echo " ECHEC  étape installation kubeadm kubectl kubernetes-cli "
             exit
         else
-            echo "======PLEASE ====="
-            echo " Veuillez éditer le fichier /etc/default/kubelet et insérer le code "
-            echo " suivant en remplacant l'adresse IP_ETH1 par celle de votre machine"
+            echo "||=======   PLEASE  =======|=======   PLEASE  =======|======   PLEASE  =======||"
+            echo " Veuillez éditer le fichier  \"/etc/default/kubelet\" et insérer le code suivant: "
             echo ""
             echo KUBELET_EXTRA_ARGS=\"--node-ip=$IP_ETH1\"
             sleep 2

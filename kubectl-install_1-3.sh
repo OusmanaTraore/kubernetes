@@ -1,12 +1,19 @@
 #!/bin/bash
+echo "===================================================================================>"
+echo "Vérifier l'adresse IP ... "
+#sleep 2
+echo " Adresses IP disponibles"
+for i in $(ip a | cut -d " " -f 6 | grep ^1 | cut -d "/" -f 1)
+do
+    echo "===> $i"
+done
 
+echo "===================================================================================>"
+read -p "Entrez l'adresse IP de la machine: " IP_ETH1 
+echo "===================================================================================>"
 
-read -p "Entrez l'adresse IP de la machine: " IP_ETH1
-
-echo "Adresse machine : $IP_ETH1 "
-echo "==> ok"
-echo "======Début installation======"
-echo "======      ETAPE 1/9  Désactivation de la swap ========="
+echo "||========================  Début installation  ==================================||"
+echo "||=================  ETAPE 1/9  Désactivation de la swap   =======================||"
 sleep 2
 ### Désactiver la swap  et la rendre persistente
 echo " Désactivation de la swap  et la rendre persistente "
@@ -14,10 +21,9 @@ echo " Désactivation de la swap  et la rendre persistente "
 sudo swapoff -a && sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
 echo ""
 ###Installation de docker
-echo "======      ETAPE 2/9  Installation de docker ========="
+echo "||=================   ETAPE 2/9  Installation de docker    =======================||"
 echo "  Début Installation de docker  "
 sleep 2
-echo "======      ETAPE 2/9  Installation de docker  ========="
 echo " 1/4 - installation des certificats"
 sudo apt install apt-transport-https ca-certificates curl software-properties-common
 echo ""
@@ -39,11 +45,13 @@ then
 else
     sleep 2
     echo " installation de docker OK" 
-    echo "======      ETAPE 3/9   ========="
+    echo "||=======   ETAPE 3/9  Configuration du fichier  /etc/docker/daemon.json  ========||"
     echo " Création et configuration du fichier /etc/docker/daemon.json"
+    echo "===================================================================================>"
     sleep 2
     echo ""
-    echo " Editer le fichier /etc/docker/daemon.json et insérer le code { \"exec-opts\": [\"native.cgroupdriver=systemd\"] } "
+    echo " Editer le fichier \"/etc/docker/daemon.json\"  et insérer le code suivant: "
+    echo " { \"exec-opts\": [\"native.cgroupdriver=systemd\"] } "
     echo " Ensuite lancer le script kubectl-install_2-3.sh"
     echo "..."
 fi 
