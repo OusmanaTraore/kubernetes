@@ -1,5 +1,5 @@
 #!/bin/bash
-IP_ETH1=$(ip a | cut -d " " -f 6 | grep ^192 | cut -d "/" -f 1)
+#IP_ETH1=$(ip a | cut -d " " -f 6 | grep ^192 | cut -d "/" -f 1)
 echo "|||========================  Début installation  =============================|||"
 echo "|||=================  ETAPE 1/8  Désactivation de la swap   ==================|||"
 ### Désactiver la swap  et la rendre persistente
