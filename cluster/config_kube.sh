@@ -20,12 +20,9 @@ echo "==========================================================================
           sudo kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address=$IP_ETH1 --ignore-preflight-errors=NumCPU
           sleep 2
           mkdir -p $HOME/.kube
-          sudo cat $HOME/.kube
           sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
-          sudo cat $HOME/.kube/config
           sudo chown $(id -u):$(id -g) $HOME/.kube/config
           echo ""
-         
           echo "|||=======   3/4     Tester l'acces au cluster  ====================|||"
           kubectl cluster-info
           sleep 2

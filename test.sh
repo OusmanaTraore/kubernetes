@@ -1,5 +1,5 @@
 #!/bin/bash
-
+kubeadm join 192.168.205.10:6443 --token fhdnzi.0xxcei4evfsdkxq5 --discovery-token-ca-cert-hash sha256:d41f1190f6356b5cd09fb277fa1d54e1f72656da4a6a780ff69de37a47584352 
 extract () {
   if [ -f $1 ] ; then
     case $1 in
@@ -21,6 +21,8 @@ extract () {
     echo "'$1' is not a valid file"
   fi
 }
+
+
 
 # echo "===================================================================================>"
 # echo "Vérifier l'adresse IP ... "
