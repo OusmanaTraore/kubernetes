@@ -66,9 +66,9 @@ Suivre ensuite les instructions  et attendez-vous à avoir le message suivant:
  ```
  -3- Se connecter au master puis  faire un "copier-coller" du contenu de config_kube.sh dans un fichier bash puis exécuter-le.
 
- [X] Entrez l'adresse ip du master 
+ - [X] Entrez l'adresse ip du master 
 
- [X] Attendez-vous à avoir à la fin du script le message suivant:
+ - [X] Attendez-vous à avoir à la fin du script le message suivant:
 
 ```
             echo "|||================================================|||"
@@ -81,10 +81,10 @@ Suivre ensuite les instructions  et attendez-vous à avoir le message suivant:
 
 ```
 -4- Remonter plus haut dans le terminal et trouver la commande qui vous permettra de joindre vos
-workers au master 
+workers au master en ajoutant sudo.
 
 ```
-kubeadm join adresse_IP:6443 --token fhdnzi.xxxxxxxxx--discovery-token-ca-cert-hash sha256:d41f1xxxxxxxx56b5cd09fb277fa1d54a47584352xxxxxx
+sudo kubeadm join adresse_IP:6443 --token fhdnzi.xxxxxxxxx--discovery-token-ca-cert-hash sha256:d41f1xxxxxxxx56b5cd09fb277fa1d54a47584352xxxxxx
 ```
 
 -5- Une fois vos workers ajoutés au cluster, vérifier cela au niveau du master 
@@ -99,4 +99,4 @@ worker2   Ready    <none>                 2m3s    v1.23.4
 ```
 
 
-================= ENJOY IT ! ====================
+   ========================================================================== ENJOY IT ! =============================================================================
