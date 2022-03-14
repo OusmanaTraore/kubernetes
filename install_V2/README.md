@@ -22,4 +22,4 @@ NB: si nécessaire générer un token pour joindre vos nodes :
 ```
 
 
-=========== ***ENJOY IT**** ===============
+=========== ***ENJOY IT*** ===============
