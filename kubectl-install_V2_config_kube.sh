@@ -31,7 +31,7 @@ echo "==========================================================================
           sleep 2
           kubectl get nodes 
           sleep 2
-          kubectl get pods -n kube-system
+          kubectl get pods -n  kube-system
           sleep 2
           echo "|||=======   4/4     Configuration  du réseau   =====================|||"
           kubectl apply -f https://github.com/coreos/flannel/raw/master/Documentation/kube-flannel.yml
