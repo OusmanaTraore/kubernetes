@@ -13,7 +13,7 @@ read -p "Entrez l'adresse IP de la machine: " IP_ETH1
 echo "=================================================================================>"
 
 echo "|||========================  Début installation  =============================|||"
-echo "|||=================  ETAPE 1/9  Désactivation de la swap   ==================|||"
+echo "|||=================  ETAPE 1/8  Désactivation de la swap   ==================|||"
 sleep 2
 ### Désactiver la swap  et la rendre persistente
 echo " Désactivation de la swap  et la rendre persistente "
@@ -21,7 +21,7 @@ echo " Désactivation de la swap  et la rendre persistente "
 sudo swapoff -a && sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
 echo ""
 ###Installation de docker
-echo "|||=================   ETAPE 2/9  Installation de docker    =====================|||"
+echo "|||=================   ETAPE 2/8  Installation de docker    =====================|||"
 echo "  Début Installation de docker  "
 sleep 2
 echo " 1/4 - installation des certificats"
@@ -46,7 +46,7 @@ then
 else
     sleep 2
     echo " installation de docker OK" 
-    echo "|||======   ETAPE 3/9  Configuration du fichier  /etc/docker/daemon.json  ======|||"
+    echo "|||======   ETAPE 3/8  Configuration du fichier  /etc/docker/daemon.json  ======|||"
     echo " Création et configuration du fichier /etc/docker/daemon.json"
     echo "===============================================================================>"
     sleep 2
@@ -87,7 +87,7 @@ else
 fi 
 ###
 DAEMON_VAR="{ \"exec-opts\": [\"native.cgroupdriver=systemd\"] }"
-echo "|||=======   ETAPE 4/9  Redémarrage du service docker  ====================|||"
+echo "|||=======   ETAPE 4/8  Redémarrage du service docker  ====================|||"
 sudo systemctl restart docker
 if [ $? -ne 0 ]; 
     then
@@ -95,7 +95,7 @@ if [ $? -ne 0 ];
         exit
     else
         sudo systemctl status  docker | grep Active  
-        echo "|||=======   ETAPE 5/9  Téléchargement des packages kubernetes  ========|||"
+        echo "|||=======   ETAPE 5/8  Téléchargement des packages kubernetes  ========|||"
         sleep 2
         curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
         sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
@@ -105,7 +105,7 @@ if [ $? -ne 0 ];
         sudo mv ~/kubernetes.list /etc/apt/sources.list.d
         sudo apt update
         echo ""
-        echo "|||====   ETAPE 6/9  Installation de kubelet kubeadm kubectl kubernetes-cni  ===|||"
+        echo "|||====   ETAPE 6/8  Installation de kubelet kubeadm kubectl kubernetes-cni  ===|||"
         sleep 2
         sudo apt install -y kubelet 
         sudo apt install -y kubeadm 
@@ -154,14 +154,14 @@ if [ $? -ne 0 ];
    fi
 ###
 sleep 2
-echo "|||====   ETAPE 7/9  Configuration kubernetes  \"/etc/default/kubelet\"  ===|||"
+echo "|||====   ETAPE 7/8  Configuration kubernetes  \"/etc/default/kubelet\"  ===|||"
 echo ""
 echo " Vérification du dossier  /etc/default/kubelet  == ok"
 sudo cat /etc/default/kubelet
 echo ""
 sleep 3
 
-echo "|||=======   ETAPE 8/9  Redémarrage des services daemon  et kubelet  =====|||"
+echo "|||=======   ETAPE 8/8  Redémarrage des services daemon  et kubelet  =====|||"
 sleep 2
 
   echo " 1/2 - Redémarrage daemon"
