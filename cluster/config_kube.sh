@@ -37,7 +37,8 @@ echo "==========================================================================
             echo "|||=======                       ==================|||"
             echo "|||                                                |||"
             echo "|||======= Joignez vos nodes au cluster ===========|||"
-            echo "||| via la commande kubeadm  fournie plus haut...  |||"
+            echo "|||                                                |||"
             echo "|||=======                       ==================|||"
             echo "|||================|======|========================|||"
-            echo "  "
+            echo "  
+           sudo kubeadm token create --print-join-command
