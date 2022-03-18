@@ -23,7 +23,7 @@ boxes = [
 ]
 
 Vagrant.configure(2) do |config|
-    config.vm.box = "generic/ubuntu2004"
+    config.vm.box ="bento/ubuntu-20.04"
   
     boxes.each do |opts|
         config.vm.define opts[:name] do |config|
