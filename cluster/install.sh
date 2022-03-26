@@ -1,6 +1,7 @@
 #!/bin/bash
-#IP_ETH1=$(ip a | cut -d " " -f 6 | grep ^192 | cut -d "/" -f 1)
+IP_ETH1=$(ip a | cut -d " " -f 6 | grep ^192 | cut -d "/" -f 1)
 echo "|||========================  Début installation  =============================|||"
+echo "L'adresse IP est $IP_ETH1"
 echo "|||=================  ETAPE 1/8  Désactivation de la swap   ==================|||"
 ### Désactiver la swap  et la rendre persistente
 echo " Désactivation de la swap  et la rendre persistente "
@@ -10,19 +11,19 @@ echo ""
 echo "|||=================   ETAPE 2/8  Installation de docker    =====================|||"
 echo "  Début Installation de docker  "
 echo " 1/4 - installation des certificats"
-sudo apt install apt-transport-https ca-certificates curl software-properties-common
+sudo apt install apt-transport-https ca-certificates curl software-properties-common 2>/dev/null
 echo ""
 echo " 2/4 - Récupération de l'image docker depuis le dépôt"
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add - 2>/dev/null
 sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
-bionic stable"
+bionic stable" -y  2>/dev/null
 echo ""
 echo " 3/4 - UPDATE  du package"
-sudo apt update -y
+sudo apt update -y 2>/dev/null
 echo ""
 echo " 4/4 - installation de docker"
 echo ""
-sudo apt install -y docker-ce
+sudo apt install -y docker-ce 2>/dev/null
 if [ $? -ne 0 ];
 then
     echo "ECHEC installation de docker "
@@ -64,19 +65,19 @@ if [ $? -ne 0 ];
     else
         sudo systemctl status  docker | grep Active  
         echo "|||=======   ETAPE 5/8  Téléchargement des packages kubernetes  ========|||"
-        curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+        curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add - 2>/dev/null
         sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
-        bionic stabe"
-        curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+        bionic stabe" 2>/dev/null
+        curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add - 2>/dev/null
         echo "deb http://apt.kubernetes.io/ kubernetes-xenial main" >> ~/kubernetes.list
         sudo mv ~/kubernetes.list /etc/apt/sources.list.d
-        sudo apt update
+        sudo apt update 2>/dev/null
         echo ""
         echo "|||====   ETAPE 6/8  Installation de kubelet kubeadm kubectl kubernetes-cni  ===|||"
-        sudo apt install -y kubelet 
-        sudo apt install -y kubeadm 
-        sudo apt install -y kubectl 
-        sudo apt install -y kubernetes-cni
+        sudo apt install -y kubelet 2>/dev/null 
+        sudo apt install -y kubeadm 2>/dev/null
+        sudo apt install -y kubectl 2>/dev/null
+        sudo apt install -y kubernetes-cni 2>/dev/null
         if [ $? -ne 0 ]; 
         then
             echo " ECHEC  étape installation kubeadm kubectl kubernetes-cli "
@@ -154,3 +155,4 @@ echo "|||======   ETAPE 8/8  Redémarrage des services daemon  et kubelet  =====
             echo "  "
         fi
 fi
+
