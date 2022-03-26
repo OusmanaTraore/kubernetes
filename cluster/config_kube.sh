@@ -44,5 +44,4 @@ echo "L'adresse IP est $IP_ETH1"
             echo "|||                                                |||"
             echo "|||=======                       ==================|||"
             echo "|||================|======|========================|||"
-            echo "  
-           sudo kubeadm token create --print-join-command
+            echo "  sudo kubeadm token create --print-join-command   "
