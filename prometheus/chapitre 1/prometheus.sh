@@ -3,7 +3,7 @@
 ### Lancement du container 
 echo " Lancement du container > "
 sudo -i 
-docker run -d --net=host -v /home/ubuntu/prometheus.yaml:/etc/prometheus/prometheus.yaml --name prometheus-server  prom/prometheus
+docker run -d --net=host -v /home/ubuntu/prometheus.yaml:/etc/prometheus/prometheus.yml --name prometheus-server  prom/prometheus
 
 ### Start Node Exporter 
 echo " Start Node Exporter > "
@@ -16,5 +16,4 @@ docker run -d \
 quay.io/prometheus/node-exporter:v0.13.0 \
 -collector.procfs /host/proc \
 -collector.sysfs /host/sys \
--collector.filesystem.ignored-mount-points
-"^/(sys|proc|dev|host|etc)($|/)"
+-collector.filesystem.ignored-mount-points "^/(sys|proc|dev|host|etc)($|/)"
