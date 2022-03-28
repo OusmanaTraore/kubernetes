@@ -1,12 +1,15 @@
 #!/bin/bash
 
-echo -e "
-=============================================================
-||||       Lancer le script en mode privilégié !!!       ||||
-=============================================================
-"
-sudo -i
-
+if [ "$EUID" -ne 0 ]
+then 
+  echo "Please run as root"
+  echo -e "
+          =============================================================
+          ||||       Lancer le script en mode privilégié !!!       ||||
+          =============================================================
+          "
+  exit
+else
 ### Update y upgrade 
 echo " Update y upgrade > "
 apt-get update && apt-get upgrade -y
@@ -39,6 +42,10 @@ echo " Installation de kubeadm kubelet et kucectl v1.19 > "
 apt-get install -y \
 kubeadm=1.19.1-00 kubelet=1.19.1-00 kubectl=1.19.1-00
 
+### MARQUAGE de kubeadm kubelet et kucectl 
+echo " Marquage de kubeadm kubelet et kucectl > "
+apt-mark hold kubelet kubeadm kubectl
+
 echo -e "
 ================================================================
 ||||            Editer le fichier /etc/hots  >              ||||
@@ -50,3 +57,10 @@ IP_de_votre_master k8smaster (ex: 192.168.58.25 k8smater)
 "
 echo " < ======================================================= >"
 
+echo -e "
+============================================================================
+|||| Lancer le script installation_kubernetes_master3.sh  sur le master ||||
+============================================================================
+"
+
+fi

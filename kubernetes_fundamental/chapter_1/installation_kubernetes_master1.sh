@@ -1,12 +1,21 @@
 #!/bin/bash
 
-echo -e "
-=============================================================
-||||       Lancer le script en mode privilégié !!!       ||||
-=============================================================
-"
-sudo -i
 
+#sudo -i
+read -p  " Passer en mode root , puis exécuter le script: sudo -i \n" var_root
+
+`$var_root`
+
+if [ "$EUID" -ne 0 ]
+then 
+  echo "Please run as root"
+  echo -e "
+          =============================================================
+          ||||       Lancer le script en mode privilégié !!!       ||||
+          =============================================================
+          "
+  exit
+else
 ### Update y upgrade 
 echo " Update y upgrade > "
 apt-get update && apt-get upgrade -y
@@ -86,9 +95,9 @@ networking:
 echo " < ======================================================= >"
 
 echo -e "
-================================================================
-|||| Puis lancer le script installation_kubernetes2.sh      ||||
-================================================================
+=======================================================================
+|||| Puis lancer le script installation_kubernetes_master2.sh      ||||
+=======================================================================
 "
 echo " < ======================================================= >"
-
+fi
