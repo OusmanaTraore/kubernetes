@@ -2,9 +2,9 @@
 
 
 #sudo -i
-read -p  " Passer en mode root , puis exécuter le script: sudo -i \n" var_root
+# read -p  " Passer en mode root , puis exécuter le script: sudo -i \n" var_root
 
-`$var_root`
+# `$var_root`
 
 if [ "$EUID" -ne 0 ]
 then 

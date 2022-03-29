@@ -1,7 +1,7 @@
 #!/bin/bash
 
-TOCKEN="k92kqs.5dvbvtxq9dh9wb70"
-SHA256="2dc46b381da9b528b8ede486e7cb2c31e8c57555b380e4d871d9a38cc37fa7cf"
+export TOCKEN="fq8dis.s0g6blttc8g04aen"
+export SHA256="ba93ce6a38c6ef55ea28b3dbd884d005ef8d279e7d87c8fc4561d1cb52952945"
 
 if [ "$EUID" -ne 0 ]
 then 

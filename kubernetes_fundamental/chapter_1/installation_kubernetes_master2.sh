@@ -15,9 +15,9 @@ reset_and_remove(){
     }
 
 ###====================================================================
-read -p  " Passer en mode root , puis exécuter le script: sudo -i \n" var_root
+# read -p  " Passer en mode root , puis exécuter le script: sudo -i \n" var_root
 
-`$var_root`
+# `$var_root`
 
 if [ "$EUID" -ne 0 ]
 then 
@@ -29,23 +29,24 @@ then
           "
   exit
 else
-#sudo -i
-
 ### Initialisation de kubeadm
-echo " Initialisation de kubeadm et sauvegarde dans kubeadm-init.out> "
-kubeadm init --config=kubeadm-config.yaml --upload-certs | tee kubeadm-init.out 
-test_kube=$?
-while [ $test_kube -ne 0 ]
-do
-    reset_and_remove()
-done
+    echo " Initialisation de kubeadm et sauvegarde dans kubeadm-init.out> "
+# test_kube=$
+    kubeadm init --config=kubeadm-config.yaml --upload-certs | tee kubeadm-init.out
+fi 
+# while [ $test_kube -ne 0 ]
+# do
+#     reset_and_remove()
+# done
 
 
 # kubeadm reset
 # rm -rf /etc/cni/net.d
 # apt purge kubeadm kubelet kubectl -y
 # apt autoremove
-fi 
+
+########################################################
+#### Deuxième partie ##################""
 
 if [ "$EUID" -ne 1000 ]
 then 
@@ -83,8 +84,6 @@ echo "source <(kubectl completion bash)" >> $HOME/.bashrc
 ### View kubeadm-config file
 echo " View kubeadm-config file > "
 sudo kubeadm config print init-defaults
-
-
 echo -e "
 =================================================================================
 |||| Lancer le script installation_kubernetes_worker1.sh  sur le worker      ||||
