@@ -120,8 +120,8 @@ echo " Initialisation de kubeadm et sauvegarde dans kubeadm-init.out> "
 kubeadm init --config=kubeadm-config.yaml --upload-certs | tee kubeadm-init.out 
 echo -e "
 =================================================================================
-||||                      Lancer le script master_file2.sh                   ||||
-                              en tant que user standard
+||||       Lancer le script installation_kubernetes_master2.sh               ||||
+                            en tant que user standard
 =================================================================================
 "
 
