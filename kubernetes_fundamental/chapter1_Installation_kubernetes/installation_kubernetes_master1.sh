@@ -58,29 +58,38 @@ wget https://docs.projectcalico.org/manifests/calico.yaml
 
 ### Edition du  fichier de configuration calico.yml
 echo -e "
-================================================================
-||||    Editer le fichier de configuration calico.yml >     ||||
-================================================================
-Décommenter les lignes suivantes:
+=================================================================
+||||    Edition du fichier de configuration calico.yml >     ||||
+=================================================================
 # - name: CALICO_IPV4POOL_CIDR 
 #   value: \"192.168.0.0/16\"
 "
 echo " < ======================================================= >"
+sleep 2
 
+sed -i -e "4222 s/# //g" calico.yaml
+sed -i -e "4223 s/# //g" calico.yaml
+awk ' {print NR "-" , $0 }' calico.yaml | grep '4222\|4223\|4224\|4225'
+
+sleep 2
 echo -e "
 ================================================================
-||||            Editer le fichier /etc/hots  >              ||||
+||||            Edition du fichier /etc/hots  >             ||||
 ================================================================
 Ajouter la ligne suivante au dessus de \"127.0.0.1 localhost \"
 ===>   
 IP_de_votre_master k8smaster (ex: 192.168.58.25 k8smater)
 ===>
 "
+sleep 2
+sed -i -e "1a  $IP_ETH1 k8smaster " /etc/hosts 
 echo " < ======================================================= >"
+
+cat /etc/hosts | grep k8smaster
 
 echo -e "
 ================================================================
-||||           Editer le fichier kubeadm-config.yaml  >     ||||
+||||         Edition du  fichier kubeadm-config.yaml  >     ||||
 ================================================================
 Insérer les lignes suivantes:
 ===>   
@@ -94,10 +103,26 @@ networking:
 "
 echo " < ======================================================= >"
 
+sleep 2
+cat <<-EOF > kubeadm-config.yaml
+apiVersion: kubeadm.k8s.io/v1beta2
+kind: ClusterConfiguration
+kubernetesVersion: 1.19.1
+controlPlaneEndpoint: "k8smaster:6443"
+networking:
+  podSubnet: 192.168.0.0/16
+EOF
+
+cat kubeadm-config.yaml
+sleep 2
+### Initialisation de kubeadm
+echo " Initialisation de kubeadm et sauvegarde dans kubeadm-init.out> "
+kubeadm init --config=kubeadm-config.yaml --upload-certs | tee kubeadm-init.out 
 echo -e "
-=======================================================================
-|||| Puis lancer le script installation_kubernetes_master2.sh      ||||
-=======================================================================
+=================================================================================
+||||                      Lancer le script master_file2.sh                   ||||
+                              en tant que user standard
+=================================================================================
 "
-echo " < ======================================================= >"
+
 fi
