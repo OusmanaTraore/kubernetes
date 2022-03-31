@@ -1,11 +1,5 @@
 ## Concernant le  "chapter1_Installation_kubernetes" procéder de la manière suivante: 
 
-Les fichiers d'installation se trouvent dans le répertoire "cluster" 
-
-````
-https://github.com/OusmanaTraore/kubernetes/blob/master/cluster
-
-````
 -1- Lancer le script installation_kubernetes_master1.sh en tant que ROOT
 
 -2- Lancer le script installation_kubernetes_master2.sh en tant que SIMPLE USER
@@ -20,4 +14,8 @@ https://github.com/OusmanaTraore/kubernetes/blob/master/cluster
 
 -5- Lancer le script installation_kubernetes_worker2.sh en tant que ROOT
 
-==========  ***ENJOY IT !***  ===========
+
+  ````
+  ==========  ***ENJOY IT !***  ===========
+
+  ````
