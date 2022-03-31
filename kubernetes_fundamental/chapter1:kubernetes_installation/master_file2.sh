@@ -101,10 +101,21 @@ then
 else 
   exit
 fi
+echo -e "
+============================================================================
+||||                  Exécuter le fichier                               ||||
 
+||||                      worker_file.sh                                ||||
+============================================================================
+"
 EOF
 
 cat secret.sh 
+sleep 2
+sed  "2d" secret.sh
+sed  "3d" secret.sh
+sleep 2
+cat secret.sh
 echo -e "
 ============================================================================
 ||||            Fin d'installation sur le master                        ||||
@@ -116,7 +127,7 @@ echo -e "
 ||||   Récupérer  le fichier secret.sh                                  ||||
 
 ||||  puis placer le dans le même répertoire contenant le  fichier      ||||
-||||       worker_file.sh ,puis executer worker_file.sh                 ||||
+||||       worker_file.sh ,puis executer le!                            ||||
 ============================================================================
 "
 fi
