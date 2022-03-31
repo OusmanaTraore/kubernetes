@@ -110,18 +110,18 @@ echo -e "
 "
 EOF
 
-cat secret.sh 
 sleep 2
-sed  "2d" secret.sh
-sed  "3d" secret.sh
+grep -e "^sed -i -e "2a"  secret.sh |  sed -i "d" 
+grep -e "^sed -i -e "3a"  secret.sh |  sed -i "d" 
 sleep 2
 cat secret.sh
+
+sleep 3
 echo -e "
 ============================================================================
 ||||            Fin d'installation sur le master                        ||||
 ============================================================================
 "
-
 echo -e "
 ============================================================================
 ||||   Récupérer  le fichier secret.sh                                  ||||
