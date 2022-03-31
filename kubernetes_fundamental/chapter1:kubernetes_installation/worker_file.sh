@@ -1,7 +1,5 @@
 #!/bin/bash
 
-# bash secret.sh
-
 if [ "$EUID" -ne 0 ]
 then 
   echo "Please run as root"
@@ -13,17 +11,8 @@ then
   exit
 else
 echo "================================================================================================>"
-echo "Vérifier l'adresse IP ... "
-#sleep 2
-echo " Adresses IP disponibles"
-for i in $(ip a | cut -d " " -f 6 | grep ^1 | cut -d "/" -f 1)
-do
-    echo "===> $i"
-done
 
-echo "================================================================================================>"
-read -p "Entrez l'adresse IP de la machine: " IP_ETH1 
-echo "================================================================================================>"
+#sleep 2
 
 ### Update y upgrade 
 echo " Update y upgrade > "
@@ -71,7 +60,8 @@ IP_de_votre_master k8smaster (ex: 192.168.58.25 k8smater)
 ===>
 "
 sleep 2
-sed -i -e "1a  $IP_ETH1 k8smaster " /etc/hosts 
+read -p " Entrez l'adresse IP de votre master " IP_master
+sed -i -e "1a  $IP_master k8smaster " /etc/hosts 
 echo " < ======================================================= >"
 
 cat /etc/hosts | grep k8smaster
@@ -82,8 +72,7 @@ echo " < ======================================================= >"
 
 ### Joindre le noeud au master
 echo " Joindre le noeud au master > "
-# kubeadm join --token $TOCKEN k8smaster:6443 --discovery-token-ca-cert-hash sha256:$SHA256
-
+kubeadm join --token $TOCKEN k8smaster:6443 --discovery-token-ca-cert-hash sha256:$SHA256
 
 echo -e "
 ============================================================================
