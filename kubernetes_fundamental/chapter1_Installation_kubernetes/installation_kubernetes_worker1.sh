@@ -46,16 +46,21 @@ kubeadm=1.19.1-00 kubelet=1.19.1-00 kubectl=1.19.1-00
 echo " Marquage de kubeadm kubelet et kucectl > "
 apt-mark hold kubelet kubeadm kubectl
 
+sleep 2
 echo -e "
 ================================================================
-||||            Editer le fichier /etc/hots  >              ||||
+||||            Edition du fichier /etc/hots  >             ||||
 ================================================================
-Ajouter la ligne suivante au dessus de \"127.0.0.1 localhost \"
+Ajout de  la ligne suivante au dessus de \"127.0.0.1 localhost \"
 ===>   
 IP_de_votre_master k8smaster (ex: 192.168.58.25 k8smater)
 ===>
 "
+sleep 2
+sed -i -e "1a  $IP_ETH1 k8smaster " /etc/hosts 
 echo " < ======================================================= >"
+
+cat /etc/hosts | grep k8smaster
 
 echo -e "
 ============================================================================
