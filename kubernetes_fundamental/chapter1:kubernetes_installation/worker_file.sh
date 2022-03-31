@@ -58,13 +58,18 @@ echo -e "
 ================================================================
 ||||            Edition du fichier /etc/hots  >             ||||
 ================================================================
-Ajouter la ligne suivante au dessus de \"127.0.0.1 localhost \"
+Ajout de  la ligne suivante dans /etc/hosts
 ===>   
 IP_de_votre_master k8smaster (ex: 192.168.58.25 k8smater)
 ===>
 "
 sleep 2
-read -p " Entrez l'adresse IP de votre master " IP_master
+read -p " 
+===============================================================>
+Entrez l'adresse IP de votre master: 
+===============================================================>
+"
+IP_master
 sed -i -e "1a  $IP_master k8smaster " /etc/hosts 
 echo " < ======================================================= >"
 
