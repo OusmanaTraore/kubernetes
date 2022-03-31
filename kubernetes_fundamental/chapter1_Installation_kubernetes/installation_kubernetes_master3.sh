@@ -16,6 +16,7 @@ openssl x509 -pubkey -in /etc/kubernetes/pki/ca.crt | openssl rsa \
 
 echo -e "
 ============================================================================
-|||| Lancer le script installation_kubernetes_worker2.sh  sur le worker ||||
+|||| Récupérer le TOKEN et le SHA256 puis insérer les dans le script    ||||
+||||  installation_kubernetes_worker2.sh puis éxecuter le!              ||||
 ============================================================================
 "
