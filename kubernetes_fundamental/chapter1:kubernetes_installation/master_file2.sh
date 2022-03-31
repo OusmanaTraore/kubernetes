@@ -102,20 +102,7 @@ else
   exit
 fi
 sleep 3
-echo -e "
-============================================================================
-||||                  Exécuter le fichier                               ||||
-
-||||                      worker_file.sh                                ||||
-============================================================================
-"
 EOF
-
-sleep 2
-grep -e "^sed -i -e "2a"  secret.sh |  sed -i "d" 
-grep -e "^sed -i -e "3a"  secret.sh |  sed -i "d" 
-sleep 2
-cat secret.sh
 
 sleep 3
 echo -e "
@@ -128,7 +115,7 @@ echo -e "
 ||||   Récupérer  le fichier secret.sh                                  ||||
 
 ||||  puis placer le dans le même répertoire contenant le  fichier      ||||
-||||       worker_file.sh ,puis executer le!                            ||||
+||||       worker_file.sh ,puis executer le secret.sh !                 ||||
 ============================================================================
 "
 fi
