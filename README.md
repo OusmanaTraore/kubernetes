@@ -1,11 +1,7 @@
-## Pour installer le cluster procéder de la manière suivante: 
+##   Dossier kubernetes_with_vagrant V3 : 
 
 Les fichiers d'installation se trouvent dans le répertoire "cluster" 
 
-````
-https://github.com/OusmanaTraore/kubernetes/blob/master/cluster
-
-````
 -1- Lancer le script clear_cache.sh en tant que root pour libérer de l'espace au niveau du cache.
 
 -2- Ouvrir trois terminaux pour lancer l'installation en parrallèle
