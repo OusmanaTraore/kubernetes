@@ -15,7 +15,7 @@
 -5- Lancer le script installation_kubernetes_worker2.sh en tant que ROOT
 
 
-  ````
-  ==========  ***ENJOY IT !***  ===========
 
-  ````
+  =====================  ***ENJOY IT !***  ======================
+
+
