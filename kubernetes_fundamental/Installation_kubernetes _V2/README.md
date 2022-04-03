@@ -1,4 +1,4 @@
-## Concernant le  "chapter1:Installation_kubernetes _V2 procéder de la manière suivante: 
+## Concernant le  "chapter1:Installation_kubernetes _V2" procéder de la manière suivante: 
 
 -1- Lancer le script master_file1.sh en tant que ROOT
 
