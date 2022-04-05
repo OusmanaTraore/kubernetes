@@ -36,7 +36,7 @@ Lancer le script master_file2.sh en tant que USER STANDARD
     ````
 -4- ====> RETOUR SUR MASTER
     Récupérer le fichier secret.sh généré par le script (master_file2.sh) et placer le dans le même répertoire que worker_file.sh                       
-    (le script worker_file.sh devra être exécuter sur le worker)
+    (le script worker_file.sh devra être exécuter sur le worker == Etape 6)
     
 -5- ====> A FAIRE SUR LE WORKER
     Lancer le script secret.sh en tant que ROOT
@@ -45,7 +45,7 @@ Lancer le script master_file2.sh en tant que USER STANDARD
         # bash secret.sh    
     ````
 
--6- ====> A FAIRE SUR LE MASTER
+-6- ====> A FAIRE SUR LE WORKER
     Lancer le script worker_file.sh en tant que ROOT
     Vous devrez entrer l' adresse IP de votre master une fois demandé au niveau du termainal
     
