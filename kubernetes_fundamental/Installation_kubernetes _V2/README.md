@@ -43,9 +43,7 @@ Lancer le script master_file2.sh en tant que USER STANDARD
     
     ````
     
-        $ sudo -i  
-        # cat > secret.sh 
-        "  copier-coller le fichier secret.sh" 
+    
         # bash secret.sh
         
     ````
