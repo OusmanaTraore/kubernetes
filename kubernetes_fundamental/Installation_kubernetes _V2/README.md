@@ -54,7 +54,7 @@
     
     ````
 
--7- ====> A FAIRE SUR LE WORKER
+-7- ====> A FAIRE SUR LE MASTER
     Vérifier la jointure du node au master
 
       ````
