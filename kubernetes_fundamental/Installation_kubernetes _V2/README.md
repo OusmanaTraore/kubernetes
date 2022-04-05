@@ -1,7 +1,7 @@
 ## Concernant le  "chapter1:Installation_kubernetes _V2" procéder de la manière suivante: 
 
--1- ====> A FAIRE SUR LE MASTER
-Lancer le script master_file1.sh en tant que ROOT
+-1- ====> A FAIRE SUR LE MASTER 
+    Lancer le script master_file1.sh en tant que ROOT
 
     ````
     $ sudo -i 
@@ -13,7 +13,7 @@ Lancer le script master_file1.sh en tant que ROOT
     ````
 
 -2- ====> A FAIRE SUR LE MASTER 
-Lancer le script master_file2.sh en tant que USER STANDARD
+    Lancer le script master_file2.sh en tant que USER STANDARD
     
     ````
         # exit
