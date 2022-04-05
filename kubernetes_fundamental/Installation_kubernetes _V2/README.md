@@ -42,10 +42,7 @@ Lancer le script master_file2.sh en tant que USER STANDARD
     Lancer le script secret.sh en tant que ROOT
     
     ````
-    
-    
-        # bash secret.sh
-        
+        # bash secret.sh    
     ````
 
 -6- ====> A FAIRE SUR LE MASTER
