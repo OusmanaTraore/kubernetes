@@ -7,11 +7,7 @@
 #     rm -rf /etc/cni/net.d
 #     apt purge kubeadm kubelet kubectl -y
 #     apt autoremove
-#     echo -e " failed to init kubeadm
-#     retrying...
-#     "
-#     sleep 2
-#     kubeadm init --config=kubeadm-config.yaml --upload-certs | tee kubeadm-init.out \
+#      
 #     }
 
 ###====================================================================
