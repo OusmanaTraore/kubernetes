@@ -1,4 +1,15 @@
 #!/bin/bash
+###====================================================================
+###                          FONCTIONS                              ###
+reset_and_remove(){
+     sudo kubeadm reset
+     sudo rm -rf /etc/cni/net.d
+     sudo apt purge kubeadm kubelet kubectl -y
+     sudo apt autoremove
+     sudo sed -i  "1d" /etc/hosts 
+     sudo rm -R $HOME/.kube
+     }
+
 
 if [ "$EUID" -ne 0 ]
 then 
@@ -90,7 +101,7 @@ IP_de_votre_master k8smaster (ex: 192.168.58.25 k8smater)
 ===>
 "
 sleep 2
-sed -i -e "1a  $IP_ETH1 k8smaster " /etc/hosts 
+sed -i  "1a  $IP_ETH1 k8smaster " /etc/hosts 
 echo " < ======================================================= >"
 
 cat /etc/hosts | grep k8smaster
