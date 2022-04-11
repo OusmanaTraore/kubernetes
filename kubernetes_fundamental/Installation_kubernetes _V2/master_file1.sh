@@ -34,6 +34,7 @@ apt-get install -y vim
 
 ### Installation de Docker
 echo " Installation de Docker >  "
+sudo swapoff -a && sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
 apt-get install -y docker.io
 
 
