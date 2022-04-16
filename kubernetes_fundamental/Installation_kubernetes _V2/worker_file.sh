@@ -1,9 +1,11 @@
 #!/bin/bash
+echo -e "
 =========================
 
 
 
 =========================
+"
 if [ "$EUID" -ne 0 ]
 then 
   echo "Please run as root"
@@ -29,6 +31,7 @@ apt-get install -y vim
 
 ### Installation de Docker
 echo " Installation de Docker >  "
+sudo swapoff -a && sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
 apt-get install -y docker.io
 
 
@@ -88,8 +91,8 @@ echo -e "
 ============================================================================
 ||||            Fin d'installation sur le worker                        ||||
 
+
+||||   Vérifier la jointure du worker au master  depuis le master       ||||         
+============================================================================
 "
-# ||||   Vérifier la jointure du worker au master  depuis le master       ||||         
-# ============================================================================
-# "
 fi
