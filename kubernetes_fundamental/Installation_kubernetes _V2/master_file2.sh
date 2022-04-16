@@ -82,18 +82,18 @@ cat << EOF > secret.sh
 #!/bin/bash
 EOF
 
-sed -i -e "2a TOCKEN=\"$TOCKEN\"" secret.sh
-sed -i -e "3a SHA256=\"$SHA256\"" secret.sh
+sed -i -e "4a TOCKEN=\"$TOCKEN\"" secret.sh
+sed -i -e "5a SHA256=\"$SHA256\"" secret.sh
 
 cat << EOF >> secret.sh
 
-sed -i -e "2a TOCKEN=\"$TOCKEN\"" secret.sh
-sed -i -e "3a SHA256=\"$SHA256\"" secret.sh
+sed -i -e "4a TOCKEN=\"$TOCKEN\"" secret.sh
+sed -i -e "5a SHA256=\"$SHA256\"" secret.sh
 
 if [[ worker_file.sh ]] 
 then
-  sed -i -e "3a TOCKEN=\"$TOCKEN\"" worker_file.sh
-  sed -i -e "4a SHA256=\"$SHA256\"" worker_file.sh
+  sed -i -e "4a TOCKEN=\"$TOCKEN\"" worker_file.sh
+  sed -i -e "5a SHA256=\"$SHA256\"" worker_file.sh
 else 
   exit
 fi
