@@ -9,4 +9,3 @@ reset_and_remove(){
      sudo rm -R $HOME/.kube
      }
 reset_and_remove
-e
