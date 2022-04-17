@@ -81,8 +81,8 @@ cat /etc/hosts | grep k8smaster
 
 echo " < ======================================================= >"
 
-echo " Désactivation de la swap> "
-sudo swapoff -a && sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
+#echo " Désactivation de la swap> "
+#sudo swapoff -a && sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
 
 ### Joindre le noeud au master
 echo " Joindre le noeud au master > "
