@@ -86,9 +86,9 @@ echo -e "
 echo " < ======================================================= >"
 sleep 2
 
-sed -i -e "4222 s/# //g" calico.yaml
-sed -i -e "4223 s/# //g" calico.yaml
-awk ' {print NR "-" , $0 }' calico.yaml | grep '4222\|4223\|4224\|4225'
+sed -i -e "4333 s/# //g" calico.yaml
+sed -i -e "4334 s/# //g" calico.yaml
+awk ' {print NR "-" , $0 }' calico.yaml | grep '4333\|4334\|4335\|4336'
 
 sleep 2
 echo -e "
