@@ -88,6 +88,8 @@ echo " < ======================================================= >"
 echo " Joindre le noeud au master > "
 kubeadm join --token $TOCKEN k8smaster:6443 --discovery-token-ca-cert-hash sha256:$SHA256
 
+if [ $# == 0 ]
+then 
 echo -e "
 ============================================================================
 ||||            Fin d'installation sur le worker                        ||||
@@ -96,4 +98,6 @@ echo -e "
 ||||   Vérifier la jointure du worker au master  depuis le master       ||||         
 ============================================================================
 "
+else 
+echo -e "ERREUR DE JOINTURE"
 fi
