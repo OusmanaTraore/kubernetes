@@ -21,6 +21,32 @@ terminal-3 :
      vagrant up worker2
     ```
 
+-3- Se connecter en ssh sur les  trois terminaux puis copier-coller le fichier install.sh , puis executer-le 
+
+terminal-1 :
+    ```
+     $ vagrant ssh master
+     $ sudo cat > install.sh
+      #copier-coller le contenu de install.sh
+     $ bash install.sh
+    ```
+
+terminal-2 :
+    ```
+     $ vagrant ssh worker1
+     $ sudo cat > install.sh
+      #copier-coller le contenu de install.sh
+     $ bash install.sh
+    ```
+
+terminal-3 :
+    ```
+     $ vagrant ssh worker2
+     $ sudo cat > install.sh
+      #copier-coller le contenu de install.sh
+     $ bash install.sh
+    ```
+
 Suivre ensuite les instructions  et attendez-vous à avoir le message suivant:
 
  ```master:  1/2 - Redémarrage daemon
@@ -60,7 +86,13 @@ Suivre ensuite les instructions  et attendez-vous à avoir le message suivant:
     worker2:   
 
  ```
- -3- Se connecter au master puis  faire un "copier-coller" du contenu de config_kube.sh dans un fichier bash puis exécuter-le.
+ -4- Se connecter au master puis  faire un "copier-coller" du contenu de config_kube.sh dans un fichier bash puis exécuter-le.
+ terminal-1 :
+    ```
+     $ sudo cat > config_kube.sh
+      #copier-coller le contenu de config_kube.sh
+     $ bash config_kube.sh
+    ```
 
  - [X] Entrez l'adresse ip du master 
 
@@ -76,14 +108,14 @@ Suivre ensuite les instructions  et attendez-vous à avoir le message suivant:
             echo "|||================|======|========================|||"
 
 ```
--4- Remonter plus haut dans le terminal et trouver la commande qui vous permettra de joindre vos
+-5- Remonter plus haut dans le terminal et trouver la commande qui vous permettra de joindre vos
 workers au master en ajoutant sudo.
 
 ```
 sudo kubeadm join adresse_IP:6443 --token fhdnzi.xxxxxxxxx--discovery-token-ca-cert-hash sha256:d41f1xxxxxxxx56b5cd09fb277fa1d54a47584352xxxxxx
 ```
 
--5- Une fois vos workers ajoutés au cluster, vérifier cela au niveau du master 
+-6- Une fois vos workers ajoutés au cluster, vérifier cela au niveau du master 
 
 ```
 vagrant@master:~$ kubectl get nodes
