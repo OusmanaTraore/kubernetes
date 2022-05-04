@@ -1,4 +1,4 @@
-##   Installation des prérequis (machine utilisée Uuntu 20.04) : 
+##   Installation des prérequis (machine utilisée Ubuntu 20.04) : 
 
 Virtualbox :
 
@@ -7,7 +7,7 @@ Virtualbox :
          $ sudo apt install virtualbox
      
 
-vagrant :
+Vagrant :
 
      
      
