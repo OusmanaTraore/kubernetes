@@ -15,7 +15,7 @@ Vagrant :
          $ sudo apt install ./vagrant_2.2.9_x86_64.deb  
          $ vagrant --version
 
-tmux:
+Tmux:
    
          $ sudo apt install tmux
     
