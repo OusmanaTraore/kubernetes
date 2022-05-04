@@ -88,7 +88,7 @@ echo " < ======================================================= >"
 echo " Joindre le noeud au master > "
 kubeadm join --token $TOCKEN k8smaster:6443 --discovery-token-ca-cert-hash sha256:$SHA256
 
-if [ $# == 0 ]
+if [ $? == 0 ]
 then 
 echo -e "
 ============================================================================
