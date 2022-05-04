@@ -1,10 +1,11 @@
 ##   Installation des prérequis (machine utilisée Uuntu 20.04) : 
 
 Virtualbox :
-     `` $ sudo apt update  
+     `` 
+         $ sudo apt update  
         
-        $ sudo apt install virtualbox
-     ``
+         $ sudo apt install virtualbox
+     
 
 vagrant :
 
