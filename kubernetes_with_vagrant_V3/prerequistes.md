@@ -2,10 +2,10 @@
 
 Virtualbox :
      ```
-     
         $ sudo apt update  
         
         $ sudo apt install virtualbox
+     
      ```
 
 vagrant :
