@@ -6,8 +6,14 @@ reset_and_remove(){
      sudo rm -rf /etc/cni/net.d
      sudo apt purge kubeadm kubelet kubectl -y
      sudo apt autoremove
-     sudo sed -i  "1d" /etc/hosts 
      sudo rm -R $HOME/.kube
+     if [  "${IP_ETH1}" ] 
+     then
+	     sudo sed -i "s/^$IP_ETH1.*$//"  /etc/hosts
+     else
+	     sudo sed -i "s/^192.*$//"  /etc/hosts
+     fi
+    
      }
 
 
@@ -86,9 +92,18 @@ echo -e "
 echo " < ======================================================= >"
 sleep 2
 
-sed -i -e "4333 s/# //g" calico.yaml
-sed -i -e "4334 s/# //g" calico.yaml
-awk ' {print NR "-" , $0 }' calico.yaml | grep '4333\|4334\|4335\|4336'
+#sed -i -e "4333 s/# //g" calico.yaml
+#sed -i -e "4334 s/# //g" calico.yaml
+#awk ' {print NR "-" , $0 }' calico.yaml | grep '4333\|4334\|4335\|4336'
+
+Numero_ligneCALICO_IPV4POOL_CIDR_Name=`awk ' {print NR "-" , $0 }' calico.yaml  | grep  CALICO_IPV4POOL_CIDR | cut -d "-" -f 1`
+Numero_ligneCALICO_IPV4POOL_CIDR_Value=`awk ' {print NR "-" , $0 }' calico.yaml  | grep  192.168.0.0/16 | cut -d "-" -f 1`
+
+sed  -i "$Numero_ligneCALICO_IPV4POOL_CIDR_Name s/# //" calico.yaml
+sed  -i "$Numero_ligneCALICO_IPV4POOL_CIDR_Value s/# //" calico.yaml
+
+awk ' {print NR "-" , $0 }' calico.yaml | grep ^"$Numero_ligneCALICO_IPV4POOL_CIDR_Name\|$Numero_ligneCALICO_IPV4POOL_CIDR_Value"
+
 
 sleep 2
 echo -e "
@@ -134,9 +149,21 @@ EOF
 
 cat kubeadm-config.yaml
 
+
+
 ### Initialisation de kubeadm
 echo " Initialisation de kubeadm et sauvegarde dans kubeadm-init.out> "
 kubeadm init --config=kubeadm-config.yaml --upload-certs | tee kubeadm-init.out 
+
+echo -e "
+|> Installation de firewalld
+"
+sudo apt install firewalld
+#if [ $? == 0 ]
+#then
+#	firewall-cmd --add-port=179/tcp --permanent
+#	firewall-cmd --reload
+#fi
 
 
 sleep 2
