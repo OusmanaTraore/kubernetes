@@ -159,13 +159,13 @@ kubeadm init --config=kubeadm-config.yaml --upload-certs | tee kubeadm-init.out
 echo -e "
 |> Installation de firewalld
 "
-sudo apt install firewalld
-if [ $? == 0 ]
-then
+#sudo apt install firewalld
+#if [ $? == 0 ]
+#then
 #	firewall-cmd --add-port=179/tcp --permanent
-	firewall-cmd --add-port=6443/tcp --permanent
-	firewall-cmd --reload
-fi
+#	firewall-cmd --add-port=6443/tcp --permanent
+#	firewall-cmd --reload
+#fi
 
 
 sleep 2
