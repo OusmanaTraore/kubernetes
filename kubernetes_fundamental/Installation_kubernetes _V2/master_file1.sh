@@ -70,9 +70,9 @@ apt-get update  -y
 
 ### INSTALLATION de Kubeadm kubelet et kucectl v1.23
 echo " Installation de kubeadm kubelet et kucectl v1.23 > "
-verSion="1.23.0-00"
+#verSion="1.23.0-00"
 apt-get install -y \
-kubeadm=$verSion kubelet=$verSion kubectl=$verSion
+kubeadm=1.23.0-00 kubelet=1.23.0-00 kubectl=1.23.0-00
 
 ### MARQUAGE de kubeadm kubelet et kucectl 
 echo " Marquage de kubeadm kubelet et kucectl > "
@@ -161,7 +161,7 @@ echo -e "
 "
 sudo apt install firewalld
 if [ $? == 0 ]
-#then
+then
 #	firewall-cmd --add-port=179/tcp --permanent
 	firewall-cmd --add-port=6443/tcp --permanent
 	firewall-cmd --reload
