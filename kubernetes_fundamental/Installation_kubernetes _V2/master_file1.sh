@@ -68,10 +68,11 @@ curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
 echo " UPDATE du repo > "
 apt-get update  -y
 
-### INSTALLATION de Kubeadm kubelet et kucectl v1.19
-echo " Installation de kubeadm kubelet et kucectl v1.19 > "
+### INSTALLATION de Kubeadm kubelet et kucectl v1.24
+echo " Installation de kubeadm kubelet et kucectl v1.24 > "
+verSion=1.23.0-00
 apt-get install -y \
-kubeadm=1.19.1-00 kubelet=1.19.1-00 kubectl=1.19.1-00
+kubeadm=$verSion kubelet=$verSion kubectl=$verSion
 
 ### MARQUAGE de kubeadm kubelet et kucectl 
 echo " Marquage de kubeadm kubelet et kucectl > "
@@ -129,7 +130,7 @@ Insérer les lignes suivantes:
 ===>   
 apiVersion: kubeadm.k8s.io/v1beta2
 kind: ClusterConfiguration
-kubernetesVersion: 1.19.1
+kubernetesVersion: 1.23.0
 controlPlaneEndpoint: \"k8smaster:6443\"
 networking:
   podSubnet: 192.168.0.0/16
@@ -141,7 +142,7 @@ sleep 2
 cat <<-EOF > kubeadm-config.yaml
 apiVersion: kubeadm.k8s.io/v1beta2
 kind: ClusterConfiguration
-kubernetesVersion: 1.19.1
+kubernetesVersion: 1.23.0
 controlPlaneEndpoint: "k8smaster:6443"
 networking:
   podSubnet: 192.168.0.0/16
@@ -159,11 +160,12 @@ echo -e "
 |> Installation de firewalld
 "
 sudo apt install firewalld
-#if [ $? == 0 ]
+if [ $? == 0 ]
 #then
 #	firewall-cmd --add-port=179/tcp --permanent
-#	firewall-cmd --reload
-#fi
+	firewall-cmd --add-port=6443/tcp --permanent
+	firewall-cmd --reload
+fi
 
 
 sleep 2
