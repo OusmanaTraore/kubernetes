@@ -68,9 +68,9 @@ curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
 echo " UPDATE du repo > "
 apt-get update  -y
 
-### INSTALLATION de Kubeadm kubelet et kucectl v1.24
-echo " Installation de kubeadm kubelet et kucectl v1.24 > "
-verSion=1.23.0-00
+### INSTALLATION de Kubeadm kubelet et kucectl v1.23
+echo " Installation de kubeadm kubelet et kucectl v1.23 > "
+verSion="1.23.0-00"
 apt-get install -y \
 kubeadm=$verSion kubelet=$verSion kubectl=$verSion
 
