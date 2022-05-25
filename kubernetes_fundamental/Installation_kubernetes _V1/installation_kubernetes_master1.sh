@@ -24,7 +24,7 @@ echo "==========================================================================
 ### Update y upgrade 
 echo " Update y upgrade > "
 apt-get update && apt-get upgrade -y
-
+sudo swapoff -a && sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
 
 ### Installation de Vim
 echo " Installation de Vim > "
