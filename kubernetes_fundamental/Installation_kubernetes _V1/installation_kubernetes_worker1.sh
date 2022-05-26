@@ -26,6 +26,8 @@ sleep 2
 echo " Update y upgrade > "
 apt-get update && apt-get upgrade -y
 
+echo " Désactivation de la swap "
+sudo swapoff -a && sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
 
 ### Installation de Vim
 echo " Installation de Vim > "
