@@ -19,7 +19,7 @@ do
 done
 
 echo "================================================================================================>"
-read -p "Entrez l'adresse IP de la machine: " IP_ETH1 
+read -p "Entrez l'adresse IP de la machine: k8smaster" IP_ETH1 
 echo "================================================================================================>"
 sleep 2
 ### Update y upgrade 
