@@ -37,7 +37,36 @@ apt-get install -y vim
 echo " Installation de Docker >  "
 apt-get install -y docker.io
 
-
+if [ $? -ne 0 ];
+then
+    echo "ECHEC installation de docker "
+    exit 1
+else
+    echo " installation de docker OK" 
+    echo "|||======   ETAPE 3/8 Configuration du fichier  /etc/docker/daemon.json  ======|||"
+    echo " Création et configuration du fichier /etc/docker/daemon.json"
+    echo "===============================================================================>"
+    echo ""
+    echo " Création et changement d'autorisation du fichier /etc/docker/daemon.json !? "
+    echo "===>"
+    sudo touch /etc/docker/daemon.json
+    sudo chmod 646 /etc/docker/daemon.json
+    sudo echo { \"exec-opts\": [\"native.cgroupdriver=systemd\"] } > /etc/docker/daemon.json
+    if [ $?  == 0 ]; then
+    echo ""
+    echo "Changement d'autorisation == OK "
+    echo "===>"
+    echo  " Configuration /etc/docker/daemon.json == OK "
+    echo "===>"
+    echo  " Vérification fichier /etc/docker/daemon.json == OK "
+    sudo cat /etc/docker/daemon.json
+    sudo chmod 644 /etc/docker/daemon.json
+    else
+        echo ""
+        echo " Changement d'autorisations non réalisé "
+        echo ""
+    fi
+fi 
 ### Ajout du repo pour kubernetes
 echo " Ajout du repo pour kubernetes > "
 echo "deb http://apt.kubernetes.io/ kubernetes-xenial main" > /etc/apt/sources.list.d/kubernetes.list
