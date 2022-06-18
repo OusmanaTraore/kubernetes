@@ -1,0 +1,60 @@
+apiVersion: v1
+items:
+- apiVersion: v1
+  kind: Service
+  metadata:
+    creationTimestamp: "2022-06-17T19:52:56Z"
+    name: mysql
+    namespace: alpha
+    resourceVersion: "788"
+    uid: 0a62f19d-c085-4782-94b7-518463593648
+  spec:
+    clusterIP: 10.43.245.252
+    clusterIPs:
+    - 10.43.245.252
+    internalTrafficPolicy: Cluster
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - port: 3306
+      protocol: TCP
+      targetPort: 3306
+    selector:
+      name: mysql
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    creationTimestamp: "2022-06-17T19:52:57Z"
+    name: web-service
+    namespace: alpha
+    resourceVersion: "805"
+    uid: 8c6c537c-9596-4c12-9526-a49c40e4112d
+  spec:
+    clusterIP: 10.43.124.155
+    clusterIPs:
+    - 10.43.124.155
+    externalTrafficPolicy: Cluster
+    internalTrafficPolicy: Cluster
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - nodePort: 30081
+      port: 8080
+      protocol: TCP
+      targetPort: 8080
+    selector:
+      name: webapp-mysql
+    sessionAffinity: None
+    type: NodePort
+  status:
+    loadBalancer: {}
+kind: List
+metadata:
+  resourceVersion: ""
+  selfLink: ""
