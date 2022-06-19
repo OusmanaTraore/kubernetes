@@ -4,7 +4,7 @@ items:
   kind: Service
   metadata:
     creationTimestamp: "2022-06-17T19:52:56Z"
-    name: mysql
+    name: mysql-service
     namespace: alpha
     resourceVersion: "788"
     uid: 0a62f19d-c085-4782-94b7-518463593648
