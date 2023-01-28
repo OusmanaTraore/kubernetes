@@ -1,6 +1,6 @@
 ##   Dossier kubernetes_with_vagrant V3 : 
 
-Les fichiers d'installation se trouvent dans le répertoire "cluster" 
+
 
 -1- Lancer le script clear_cache.sh en tant que root pour libérer de l'espace au niveau du cache.
 
