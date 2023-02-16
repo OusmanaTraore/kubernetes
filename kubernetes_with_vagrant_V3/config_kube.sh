@@ -21,6 +21,16 @@ echo "L'adresse IP est $IP_ETH1"
           echo " sudo cp -i /etc/kubernetes/admin.conf \$HOME/.kube/config"
           echo " sudo chown $(id -u):$(id -g) \$HOME/.kube/config"
           echo "...."
+          kube_rest(){
+          echo " | DELETING config file...|"
+          kubeadm reset
+          rm /etc/containerd/config.toml
+          echo " | RESTARTING containerd...|"
+          systemctl restart containerd
+          echo " | INITIALIZING kubeadm...|"
+          }
+          kube_reset
+          echo " | INITIALIZING kubeadm...|"
           sudo kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address=$IP_ETH1 --ignore-preflight-errors=NumCPU
           sleep 2
           mkdir -p $HOME/.kube
