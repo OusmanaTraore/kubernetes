@@ -1,5 +1,7 @@
 ##   Dossier kubernetes_with_vagrant V3 : 
-#### Lien vers la video ==> https://www.youtube.com/watch?v=eVbTUfZcGbI
+#### [Lien vers la video ==> ](https://www.youtube.com/watch?v=eVbTUfZcGbI)
+
+![video](https://www.youtube.com/watch?v=eVbTUfZcGbI)
 
 Les fichiers d'installation se trouvent dans le répertoire "cluster" 
 
