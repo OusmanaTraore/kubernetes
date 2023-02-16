@@ -3,30 +3,28 @@
 
 Les fichiers d'installation se trouvent dans le répertoire "cluster" 
 
--1- Lancer le script clear_cache.sh en tant que root pour libérer de l'espace au niveau du cache.
-
--2- Ouvrir trois terminaux pour lancer l'installation en parrallèle
+-1- Ouvrir trois terminaux pour lancer les machines virtuelles
 
 terminal-1 :
     ```
-     vagrant up master
+     vagrant up control-plane
     ```
 
 terminal-2 :
     ```
-     vagrant up worker1
+     vagrant up node01
     ```
 
 terminal-3 :
     ```
-     vagrant up worker2
+     vagrant up node02
     ```
 
--3- Se connecter en ssh sur les  trois terminaux puis copier-coller le fichier install.sh , puis executer-le 
+-2- Se connecter en ssh sur les  trois terminaux puis copier-coller le fichier install.sh , puis executer-le 
 
 terminal-1 :
     ```
-     $ vagrant ssh master
+     $ vagrant ssh control-plane
      $ sudo cat > install.sh
       #copier-coller le contenu de install.sh
      $ bash install.sh
@@ -34,7 +32,7 @@ terminal-1 :
 
 terminal-2 :
     ```
-     $ vagrant ssh worker1
+     $ vagrant ssh node01
      $ sudo cat > install.sh
       #copier-coller le contenu de install.sh
      $ bash install.sh
@@ -42,7 +40,7 @@ terminal-2 :
 
 terminal-3 :
     ```
-     $ vagrant ssh worker2
+     $ vagrant ssh node02
      $ sudo cat > install.sh
       #copier-coller le contenu de install.sh
      $ bash install.sh
