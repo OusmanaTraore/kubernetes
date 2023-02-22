@@ -63,7 +63,7 @@ else
             echo ""
             echo "|||=========================================================================================|||"
             echo "|||=======   PLEASE  =======|=======   PLEASE  =======|======   PLEASE  =======|============|||"
-            echo "|||   ATTENTION  AVANT DE LANCER LE SECOND SCRIPT VEUILLEZ EFFECTUER L'ETAPE CI-DESSOUS     |||"
+            echo "||| ATTENTION  AVANT DE LANCER LE TROISIEME SCRIPT VEUILLEZ EFFECTUER L'ETAPE CI-DESSOUS    |||"
             echo "|||                                                                                         |||"
             echo "|||                                                                                         |||"
             echo "|||======= Editer le fichier   \"/etc/default/kubelet\"   et insérer le code suivant: ========|||"
