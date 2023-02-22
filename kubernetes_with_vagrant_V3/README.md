@@ -1,7 +1,6 @@
 ##   Dossier kubernetes_with_vagrant V3 : 
 #### Lien vers la video ==> (https://www.youtube.com/watch?v=eVbTUfZcGbI)
 
-Les fichiers d'installation se trouvent dans le répertoire "cluster" 
 
 -1- Ouvrir trois terminaux pour lancer les machines virtuelles
 
